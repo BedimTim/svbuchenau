@@ -1,0 +1,279 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Ausr_stung {
+  Ausr_stungs_ID                                                                String                         @id @default(uuid()) @map("Ausrüstungs_ID")
+  Ausr_stungstyp                                                                String                         @map("Ausrüstungstyp")
+  Ausr_stungshersteller                                                         String                         @map("Ausrüstungshersteller")
+  Einzelpreis                                                                   Decimal
+  Ausr_stungshersteller_Ausr_stung_Ausr_stungsherstellerToAusr_stungshersteller Ausr_stungshersteller       @relation("Ausr_stung_Ausr_stungsherstellerToAusr_stungshersteller", fields: [Ausr_stungshersteller], references: [Hersteller_ID], onDelete: NoAction, onUpdate: NoAction)
+  Ausr_stungstyp_Ausr_stung_Ausr_stungstypToAusr_stungstyp                      Ausr_stungstyp              @relation("Ausr_stung_Ausr_stungstypToAusr_stungstyp", fields: [Ausr_stungstyp], references: [Ausr_stungstyp_ID], onDelete: NoAction, onUpdate: NoAction)
+  Ausr_stungskauf_Ausr_stung_Ausr_stungskauf_Ausr_stung_Ausr_stungToAusr_stung  Ausr_stungskauf_Ausr_stung[] @relation("Ausr_stungskauf_Ausr_stung_Ausr_stungToAusr_stung")
+
+  @@map("Ausrüstung")
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Ausr_stungshersteller {
+  Hersteller_ID                                                      String         @id @default(uuid())
+  Herstellername                                                     String
+  Ausr_stung_Ausr_stung_Ausr_stungsherstellerToAusr_stungshersteller Ausr_stung[] @relation("Ausr_stung_Ausr_stungsherstellerToAusr_stungshersteller")
+
+  @@map("Ausrüstungshersteller")
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Ausr_stungskauf {
+  Kauf_ID                                                                                String                         @id @default(uuid())
+  Datum                                                                                  DateTime
+  Zweck                                                                                  String
+  Mitglied                                                                               String
+  Mitglied_Ausr_stungskauf_MitgliedToMitglied                                            Mitglied                    @relation("Ausr_stungskauf_MitgliedToMitglied", fields: [Mitglied], references: [Mitglied_ID], onDelete: NoAction, onUpdate: NoAction)
+  Ausr_stungskauf_Ausr_stung_Ausr_stungskauf_Ausr_stung_Ausr_stungskaufToAusr_stungskauf Ausr_stungskauf_Ausr_stung[] @relation("Ausr_stungskauf_Ausr_stung_Ausr_stungskaufToAusr_stungskauf")
+
+  @@map("Ausrüstungskauf")
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Ausr_stungskauf_Ausr_stung {
+  Ausr_stungskauf                                                             String             @map("Ausrüstungskauf")
+  Ausr_stung                                                                  String             @map("Ausrüstung")
+  Anzahl                                                                      Int
+  Ausr_stung_Ausr_stungskauf_Ausr_stung_Ausr_stungToAusr_stung                Ausr_stung      @relation("Ausr_stungskauf_Ausr_stung_Ausr_stungToAusr_stung", fields: [Ausr_stung], references: [Ausr_stungs_ID], onDelete: NoAction, onUpdate: NoAction)
+  Ausr_stungskauf_Ausr_stungskauf_Ausr_stung_Ausr_stungskaufToAusr_stungskauf Ausr_stungskauf @relation("Ausr_stungskauf_Ausr_stung_Ausr_stungskaufToAusr_stungskauf", fields: [Ausr_stungskauf], references: [Kauf_ID], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([Ausr_stungskauf, Ausr_stung])
+  @@map("Ausrüstungskauf_Ausrüstung")
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Ausr_stungstyp {
+  Ausr_stungstyp_ID                                    String         @id @default(uuid()) @map("Ausrüstungstyp_ID")
+  Bezeichnung                                          String
+  Ausr_stung_Ausr_stung_Ausr_stungstypToAusr_stungstyp Ausr_stung[] @relation("Ausr_stung_Ausr_stungstypToAusr_stungstyp")
+
+  @@map("Ausrüstungstyp")
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Auszeichnung {
+  Auszeichnungs_ID                                                 String              @id @default(uuid())
+  Verleihungsdatum                                                 DateTime
+  Auszeichnungstyp                                                 String
+  Mitglied                                                         String
+  Mitglied_Auszeichnung_MitgliedToMitglied                         Mitglied         @relation("Auszeichnung_MitgliedToMitglied", fields: [Mitglied], references: [Mitglied_ID], onDelete: NoAction, onUpdate: NoAction)
+  Auszeichnungstyp_Auszeichnung_AuszeichnungstypToAuszeichnungstyp Auszeichnungstyp @relation("Auszeichnung_AuszeichnungstypToAuszeichnungstyp", fields: [Auszeichnungstyp], references: [Auszeichnungstyp_ID], onDelete: NoAction, onUpdate: NoAction)
+
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Auszeichnungstyp {
+  Auszeichnungstyp_ID                                          String           @id @default(uuid())
+  Bezeichnung                                                  String
+  Verleihungsgrund                                             String
+  Auszeichnung_Auszeichnung_AuszeichnungstypToAuszeichnungstyp Auszeichnung[] @relation("Auszeichnung_AuszeichnungstypToAuszeichnungstyp")
+
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Besucher {
+  Besucher_ID                                    String            @id @default(uuid())
+  Vorname                                        String
+  Nachname                                       String
+  Bierdeckel                                     Bierdeckel[]
+  Registrierung_Registrierung_BesucherToBesucher Registrierung[] @relation("Registrierung_BesucherToBesucher")
+
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Bierdeckel {
+  Bierdeckel_ID                                                String                @id @default(uuid())
+  Datum                                                        DateTime
+  Bezahlt                                                      Boolean
+  Besucher_ID                                                  String
+  Mitglied_ID                                                  String
+  Mitglied                                                     Mitglied            @relation(fields: [Mitglied_ID], references: [Mitglied_ID], onDelete: NoAction, onUpdate: NoAction)
+  Besucher                                                     Besucher            @relation(fields: [Besucher_ID], references: [Besucher_ID], onDelete: NoAction, onUpdate: NoAction)
+  Bierdeckel_Getr_nk_Bierdeckel_Getr_nk_BierdeckelToBierdeckel Bierdeckel_Getr_nk[] @relation("Bierdeckel_Getr_nk_BierdeckelToBierdeckel")
+
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Bierdeckel_Getr_nk {
+  Bierdeckel                                           String
+  Getr_nk                                              String          @map("Getränk")
+  Anzahl                                               Int
+  Getr_nk_Bierdeckel_Getr_nk_Getr_nkToGetr_nk          Getr_nk      @relation("Bierdeckel_Getr_nk_Getr_nkToGetr_nk", fields: [Getr_nk], references: [Getr_nk_ID], onDelete: NoAction, onUpdate: NoAction)
+  Bierdeckel_Bierdeckel_Getr_nk_BierdeckelToBierdeckel Bierdeckel   @relation("Bierdeckel_Getr_nk_BierdeckelToBierdeckel", fields: [Bierdeckel], references: [Bierdeckel_ID], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([Bierdeckel, Getr_nk])
+  @@map("Bierdeckel_Getränk")
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Disziplin {
+  Disziplin_ID                                           String               @id @default(uuid())
+  Bezeichnung                                            String
+  Sch_tzenergebnis_Sch_tzenergebnis_DisziplinToDisziplin Sch_tzenergebnis[] @relation("Sch_tzenergebnis_DisziplinToDisziplin")
+
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Getr_nk {
+  Getr_nk_ID                                             String                 @id @default(uuid()) @map("Getränk_ID")
+  Bezeichnung                                            String
+  Preis                                                  Decimal
+  Marke                                                  String
+  Sorte                                                  String
+  Bierdeckel_Getr_nk_Bierdeckel_Getr_nk_Getr_nkToGetr_nk Bierdeckel_Getr_nk[]   @relation("Bierdeckel_Getr_nk_Getr_nkToGetr_nk")
+  Getr_nkesorte                                          Getr_nkesorte          @relation(fields: [Sorte], references: [Sorte_ID], onDelete: NoAction, onUpdate: NoAction)
+  Getr_nkemarke                                          Getr_nkemarke          @relation(fields: [Marke], references: [Marke_ID], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("Getränk")
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Getr_nkemarke {
+  Marke_ID String      @id @default(uuid())
+  Name     String
+  Getr_nk  Getr_nk[]
+
+  @@map("Getränkemarke")
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Getr_nkesorte {
+  Sorte_ID    String      @id @default(uuid())
+  Bezeichnung String
+  Getr_nk     Getr_nk[]
+
+  @@map("Getränkesorte")
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Mitglied {
+  Mitglied_ID                                        String               @id @default(uuid())
+  Vorname                                            String
+  Nachname                                           String
+  Wohnort                                            String
+  PLZ                                                String
+  Stra_e                                             String               @map("Straße")
+  HausNr                                             String
+  Handynummer                                        String
+  Festnetznummer                                     String
+  Email_Adresse                                      String
+  Geburtsdatum                                       DateTime
+  Mitgliedsart                                       String
+  Ausr_stungskauf_Ausr_stungskauf_MitgliedToMitglied Ausr_stungskauf[]    @relation("Ausr_stungskauf_MitgliedToMitglied")
+  Auszeichnung_Auszeichnung_MitgliedToMitglied       Auszeichnung[]       @relation("Auszeichnung_MitgliedToMitglied")
+  Bierdeckel                                         Bierdeckel[]
+  Mitgliedsart_Mitglied_MitgliedsartToMitgliedsart   Mitgliedsart         @relation("Mitglied_MitgliedsartToMitgliedsart", fields: [Mitgliedsart], references: [Mitgliedsart_ID], onDelete: NoAction, onUpdate: NoAction)
+  Teilnahme_Teilnahme_MitgliedToMitglied             Teilnahme[]          @relation("Teilnahme_MitgliedToMitglied")
+
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Mitgliedsart {
+  Mitgliedsart_ID                              String       @id @default(uuid())
+  Bezeichnung                                  String
+  Preis                                        Decimal
+  Mitglied_Mitglied_MitgliedsartToMitgliedsart Mitglied[] @relation("Mitglied_MitgliedsartToMitgliedsart")
+
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Registrierung {
+  Registrierungs_ID                                                 String              @id @default(uuid())
+  Besucher                                                          String
+  Veranstaltung                                                     String
+  Sch_tzenergebnis                                                  String                 @map("Schützenergebnis")
+  Sch_tzenergebnis_Registrierung_Sch_tzenergebnisToSch_tzenergebnis Sch_tzenergebnis    @relation("Registrierung_Sch_tzenergebnisToSch_tzenergebnis", fields: [Sch_tzenergebnis], references: [Ergebnis_ID], onDelete: NoAction, onUpdate: NoAction)
+  Veranstaltung_Registrierung_VeranstaltungToVeranstaltung          Veranstaltung       @relation("Registrierung_VeranstaltungToVeranstaltung", fields: [Veranstaltung], references: [Veranstaltungs_ID], onDelete: NoAction, onUpdate: NoAction)
+  Besucher_Registrierung_BesucherToBesucher                         Besucher            @relation("Registrierung_BesucherToBesucher", fields: [Besucher], references: [Besucher_ID], onDelete: NoAction, onUpdate: NoAction)
+
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Sch_tzenergebnis {
+  Ergebnis_ID                                                    String            @id @default(uuid())
+  Serie1                                                         Int
+  Serie2                                                         Int
+  Serie3                                                         Int
+  Serie4                                                         Int
+  Disziplin                                                      String
+  Registrierung_Registrierung_Sch_tzenergebnisToSch_tzenergebnis Registrierung[] @relation("Registrierung_Sch_tzenergebnisToSch_tzenergebnis")
+  Disziplin_Sch_tzenergebnis_DisziplinToDisziplin                Disziplin      @relation("Sch_tzenergebnis_DisziplinToDisziplin", fields: [Disziplin], references: [Disziplin_ID], onDelete: NoAction, onUpdate: NoAction)
+  Teilnahme_Teilnahme_Sch_tzenergebnisToSch_tzenergebnis         Teilnahme[]     @relation("Teilnahme_Sch_tzenergebnisToSch_tzenergebnis")
+
+  @@map("Schützenergebnis")
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Teilnahme {
+  Teilnahme_ID                                                  String              @id @default(uuid())
+  Mitglied                                                      String
+  Veranstaltung                                                 String
+  Sch_tzenergebnis                                              String                 @map("Schützenergebnis")
+  Sch_tzenergebnis_Teilnahme_Sch_tzenergebnisToSch_tzenergebnis Sch_tzenergebnis    @relation("Teilnahme_Sch_tzenergebnisToSch_tzenergebnis", fields: [Sch_tzenergebnis], references: [Ergebnis_ID], onDelete: NoAction, onUpdate: NoAction)
+  Veranstaltung_Teilnahme_VeranstaltungToVeranstaltung          Veranstaltung       @relation("Teilnahme_VeranstaltungToVeranstaltung", fields: [Veranstaltung], references: [Veranstaltungs_ID], onDelete: NoAction, onUpdate: NoAction)
+  Mitglied_Teilnahme_MitgliedToMitglied                         Mitglied            @relation("Teilnahme_MitgliedToMitglied", fields: [Mitglied], references: [Mitglied_ID], onDelete: NoAction, onUpdate: NoAction)
+
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Veranstaltung {
+  Veranstaltungs_ID                                                    String               @id @default(uuid())
+  Datum                                                                DateTime
+  Veranstaltungsort                                                    String
+  Veranstaltungstyp                                                    String
+  Registrierung_Registrierung_VeranstaltungToVeranstaltung             Registrierung[]      @relation("Registrierung_VeranstaltungToVeranstaltung")
+  Teilnahme_Teilnahme_VeranstaltungToVeranstaltung                     Teilnahme[]          @relation("Teilnahme_VeranstaltungToVeranstaltung")
+  Veranstaltungstyp_Veranstaltung_VeranstaltungstypToVeranstaltungstyp Veranstaltungstyp    @relation("Veranstaltung_VeranstaltungstypToVeranstaltungstyp", fields: [Veranstaltungstyp], references: [Veranstaltungstyp_ID], onDelete: NoAction, onUpdate: NoAction)
+  Veranstaltungsort_Veranstaltung_VeranstaltungsortToVeranstaltungsort Veranstaltungsort    @relation("Veranstaltung_VeranstaltungsortToVeranstaltungsort", fields: [Veranstaltungsort], references: [Ort_ID], onDelete: NoAction, onUpdate: NoAction)
+
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Veranstaltungsort {
+  Ort_ID                                                           String            @id @default(uuid())
+  Ortsname                                                         String
+  Veranstaltung_Veranstaltung_VeranstaltungsortToVeranstaltungsort Veranstaltung[] @relation("Veranstaltung_VeranstaltungsortToVeranstaltungsort")
+
+  
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Veranstaltungstyp {
+  Veranstaltungstyp_ID                                             String            @id @default(uuid())
+  Bezeichnung                                                      String
+  Veranstaltung_Veranstaltung_VeranstaltungstypToVeranstaltungstyp Veranstaltung[] @relation("Veranstaltung_VeranstaltungstypToVeranstaltungstyp")
+
+  
+}
