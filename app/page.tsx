@@ -1,6 +1,20 @@
 import Image from "next/image";
+import prisma from "@/lib/prisma";
+import Veranstaltung from "/home/tim/responsive-navbar/app/Components/Veranstaltung";
 
-export default function Home() {
+async function getVeranstaltungen() {
+    const veranstaltungen = await prisma.veranstaltung.findMany({
+        include: {
+            veranstaltungsort_veranstaltung_veranstaltungsortToveranstaltungsort: true,
+            veranstaltungstyp_veranstaltung_veranstaltungstypToveranstaltungstyp: true
+        }
+    })
+    return veranstaltungen;
+}
+
+export default async function Home() {
+  const veranstaltungen = await getVeranstaltungen();
+  console.log(veranstaltungen);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-cover bg-center" style={{ backgroundImage: "url('/path/to/your/background.jpg')" }}>
       <section className="w-full mt-12 p-8 text-center bg-lime-600 bg-opacity-75 rounded-lg">
@@ -9,15 +23,16 @@ export default function Home() {
           Willkommen auf der Webseite unseres Vereins. Wir sind eine Gemeinschaft von Enthusiasten, die sich für [Thema des Vereins] interessieren.
         </p>
       </section>
-
+      
       <section className="w-full p-8 text-center bg-lime-600 bg-opacity-75 rounded-lg mt-8">
-        <h2 className="text-2xl font-semibold text-white">Mitglieder</h2>
-        <ul className="mt-4 text-white">
-          <li>Mitglied 1</li>
-          <li>Mitglied 2</li>
-          <li>Mitglied 3</li>
-          <li>Mitglied 4</li>
-        </ul>
+        <h2 className="text-2xl font-semibold text-white">Veranstaltungen</h2>
+        {
+        veranstaltungen.map((veranstaltung) => {
+          return (
+            <Veranstaltung key={veranstaltung.Veranstaltungs_ID} id={veranstaltung.Veranstaltungs_ID} Ortsname={veranstaltung.veranstaltungsort.Ortsname} bezeichnung={veranstaltung.veranstaltungstyp.Bezeichnung} />
+          );
+        })  
+        }
       </section>
 
       <section className="w-full p-8 text-center bg-lime-600 bg-opacity-75 rounded-lg mt-8">
