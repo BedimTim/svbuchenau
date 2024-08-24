@@ -4,11 +4,11 @@ import Link from 'next/link';
 
 interface ButtonProps {
     name: string;
-    file?: string;
+    file: string;
 }
 
 const Button: React.FC<ButtonProps> = ({ name, file }) => {
-    const resFile = file || '';
+    const resFile = file;
     const handleClick = async () => {
         const response = await fetch(resFile);
         const blob = await response.blob();

@@ -12,7 +12,7 @@ export default function Home() {
       
       <section className="w-full p-8 text-center bg-lime-600 bg-opacity-75 rounded-lg m-4">
         <h2 className="text-2xl font-semibold text-white">Mitglied werden</h2>
-        <Button name="Mitgliedsantrag herunterladen" file="app/api/file/route.ts" />
+        <Button name="Mitgliedsantrag herunterladen" file="app/api/file" />
       </section>
 
       <section className="w-full p-8 text-center bg-lime-600 bg-opacity-75 rounded-lg mt-8">
