@@ -1,4 +1,5 @@
 import Button from './Components/Button';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -12,7 +13,21 @@ export default function Home() {
       
       <section className="w-full p-8 text-center bg-lime-600 bg-opacity-75 rounded-lg m-4">
         <h2 className="text-2xl font-semibold text-white">Mitglied werden</h2>
-        <Button name="Mitgliedsantrag herunterladen" file="app/api/file" />
+        <Link
+                href={"/home/tim/responsive-navbar/public/Beitritt.pdf"}
+                className="cursor-pointer  block rounded py-4 px-4 bg-blue text-white border-0"
+                  style={{
+                    width: "100%",
+                    maxWidth: 200,
+                    minWidth: 100,
+                    fontSize: "1rem",
+                  }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+              >
+              Mitgliedsantrag herunterladen
+              </Link>
       </section>
 
       <section className="w-full p-8 text-center bg-lime-600 bg-opacity-75 rounded-lg mt-8">

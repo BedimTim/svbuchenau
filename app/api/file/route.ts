@@ -1,11 +1,10 @@
-import { readFile } from "fs/promises";
+import { NextApiRequest, NextApiResponse } from "next";
+import fs from "fs";
 import path from "path";
 
-export async function GET() {
-    const buffer = await readFile(path.join(process.cwd(), "public/Beitritt.pdf"));
-    const headers = new Headers();
-    headers.append('Content-Disposition', 'attachment; filename="Beitritt.pdf"');
-    headers.append('Content-Type', 'text/pdf');
-    return new Response(buffer, { headers });
-  }
-  
+export default (req: NextApiRequest, res: NextApiResponse) => {
+  const filePath = path.resolve('.', 'public', 'Beitritt.pdf');
+  const fileBuffer = fs.readFileSync(filePath);
+  res.setHeader('Content-Type', 'application/pdf');
+  res.send(fileBuffer);
+};
