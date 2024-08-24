@@ -11,18 +11,12 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+
   padding: 24px;
   min-height: 100vh;
 }
 
-header, footer {
-  width: 100%;
-  background-color: #1e40af; /* Tailwind CSS blue-600 */
-  color: white;
-  padding: 16px;
-  text-align: center;
-}
+
 
 section {
   width: 100%;
