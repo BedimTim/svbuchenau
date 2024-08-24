@@ -32,15 +32,15 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between items-center w-full h-32 px-4 text-white fixed nav bg-lime-600">
-      <div className=" max-h-28 size-28 bg-gray-300 rounded-full hover:scale-105 hover:bg-white duration-150">
+      <div className="flex max-h-28 size-28 hover:bg-gray-300 rounded-full hover:scale-105 bg-white duration-150 border-2 ">
         {/* <h1 className="text-5xl font-signature ml-2"><a className="link-underline hover:transition ease-in-out delay-150 hover:underline hover:decoration-solid" href="">Logo</a></h1> */}
           <a
-            className="link-underline link-underline-black"
+            className="link-underline link-underline-black flex justify-center items-center mx-2"
             href=""
             target="_blank"
             rel="noreferrer"
           >
-            <Image className="flex size-24 mx-2 my-2" src="/Buchenau.png" width={1080} height={1324} />
+            <Image className="size-24 " src="/Buchenau.png" width={1080} height={1324} />
           </a>      
       </div>
 
