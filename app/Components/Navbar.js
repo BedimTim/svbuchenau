@@ -18,28 +18,24 @@ const Navbar = () => {
     },
     {
       id: 3,
-      link: "schießsport",
-    },
-    {
-      id: 4,
-      link: "kontakt",
+      link: "schiesssport",
     },
   ];
 
   return (
-    <div className="flex justify-between items-center w-full h-32 px-4 text-white fixed nav bg-lime-600">
+    <div className="flex  items-center w-full h-32 px-4 text-white fixed nav bg-lime-600">
       <div className="flex max-h-28 size-28 hover:bg-gray-300 rounded-full hover:scale-105 bg-white duration-150 border-2 ">
         {/* <h1 className="text-5xl font-signature ml-2"><a className="link-underline hover:transition ease-in-out delay-150 hover:underline hover:decoration-solid" href="">Logo</a></h1> */}
-          <a
+          <Link
             className="link-underline link-underline-black flex justify-center items-center mx-2"
-            href=""
+            href="/"
             target="_blank"
             rel="noreferrer"
           >
             <Image className="size-24 " src="/Buchenau.png" width={1080} height={1324} />
-          </a>      
+          </Link>      
       </div>
-
+      <div className="my-auto ml-10 mr-auto text-sm sm:text-base">Schützenverein<br/> Buchenau/Giesenhain</div>
       <ul className="hidden md:flex">
         {links.map(({ id, link }) => (
           <li
@@ -65,9 +61,8 @@ const Navbar = () => {
               key={id}
               className="px-4 cursor-pointer capitalize py-6 text-4xl hover:scale-105 hover:text-white duration-200"
             >
-              <Link onClick={() => setNav(!nav)} href={link}>
-                {link}
-              </Link>
+              {link === "startseite" ? <Link onClick={() => setNav(!nav)} href="/">{link}</Link> :  <Link onClick={() => setNav(!nav)} href={link}>{link}</Link>}
+              
             </li>
           ))}
         </ul>
