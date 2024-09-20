@@ -31,16 +31,6 @@ export default function Home() {
           
         </div>
       </section>
-
-      <section className="flex-col w-full mt-8 sm:mt-4 p-8  text-left bg-lime-600 bg-opacity-75 rounded-lg">
-        <div className="sm:text-3xl font-semibold text-center text-white" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Vorsitz</div>
-        <ul>
-          <li className="sm:text-lg mt-4 text-white">Vorsitzender: Frank Hutzheimer</li>
-          <li className="sm:text-lg mt-4 text-white">2. Vorsitzender: </li>
-          <li className="sm:text-lg mt-4 text-white">Schriftführer: </li>
-          <li className="sm:text-lg mt-4 text-white">Schatzmeister: Udo Schubert</li>
-        </ul>
-      </section>
       </div>
     </main>
   );

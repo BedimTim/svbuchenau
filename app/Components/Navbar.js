@@ -18,7 +18,7 @@ const Navbar = () => {
     },
     {
       id: 3,
-      link: "schiesssport",
+      link: "schießsport",
     },
   ];
 
