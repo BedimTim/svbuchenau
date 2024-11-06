@@ -14,17 +14,21 @@ const Navbar = () => {
     },
     {
       id: 2,
-      link: "verein",
+      link: "aktuelles",
     },
     {
       id: 3,
+      link: "verein",
+    },
+    {
+      id: 4,
       link: "schießsport",
     },
   ];
 
   return (
-    <div className="flex  items-center w-full h-32 px-4 text-white fixed nav bg-lime-600">
-      <div className="flex max-h-28 size-28 hover:bg-gray-300 rounded-full hover:scale-105 bg-white duration-150 border-2 ">
+    <div className="flex  items-center w-full h-32 px-4 text-black fixed nav bg-white  border-black shadow-xl">
+      <div className="flex max-h-28 size-28 hover:bg-gray-100 rounded-full hover:scale-105 shadow-2xl bg-white border-black duration-150 border-2 ">
         {/* <h1 className="text-5xl font-signature ml-2"><a className="link-underline hover:transition ease-in-out delay-150 hover:underline hover:decoration-solid" href="">Logo</a></h1> */}
           <Link
             className="link-underline link-underline-black flex justify-center items-center mx-2"
@@ -40,7 +44,7 @@ const Navbar = () => {
         {links.map(({ id, link }) => (
           <li
             key={id}
-            className="nav-links px-10 size-full cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 hover:text-white duration-200 link-underline"
+            className="nav-links px-10 size-full cursor-pointer capitalize font-medium text-black hover:scale-125 hover: duration-200 link-underline"
           >
               {link === "startseite" ? <Link href="/">{link}</Link> : <Link href={link}>{link}</Link>}
           </li>
@@ -49,17 +53,17 @@ const Navbar = () => {
 
       <div
         onClick={() => setNav(!nav)}
-        className="cursor-pointer pr-4 z-10 text-white md:hidden hover:scale-105 hover:text-white duration-200"
+        className="cursor-pointer pr-4 z-10 text-black md:hidden hover:scale-105  duration-200"
       >
         {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
       </div>
 
       {nav && (
-        <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b duration-300 from-black to-lime-600 text-white">
+        <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b duration-300 from-white to-white text-black">
           {links.map(({ id, link }) => (
             <li
               key={id}
-              className="px-4 cursor-pointer capitalize py-6 text-4xl hover:scale-105 hover:text-white duration-200"
+              className="px-4 cursor-pointer capitalize py-6 text-4xl hover:scale-105 hover:text-lime-600 duration-200"
             >
               {link === "startseite" ? <Link onClick={() => setNav(!nav)} href="/">{link}</Link> :  <Link onClick={() => setNav(!nav)} href={link}>{link}</Link>}
               

@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({ name, file }) => {
     };
 
     return (
-        <button className='bg-slate-500 rounded-2xl p-4 mt-6 hover:bg-slate-600 duration-500 text-white font-bold border-4  hover:border-sky-300' onClick={handleClick}>
+        <button className='bg-slate-200 rounded-2xl p-4 mt-6 hover:bg-gray-400 duration-500 text-black font-bold hover:font- border-4 border-black  ' onClick={handleClick}>
             {name}
         </button>
     );
