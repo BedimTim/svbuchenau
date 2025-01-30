@@ -4,9 +4,16 @@ import { useState } from "react";
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, getDay, addDays, eachWeekOfInterval } from "date-fns";
 import { de } from "date-fns/locale/de";
 
+interface Event
+{
+  date: string;
+  title: string;
+  description: string;
+}
+
 const generateEvents = (year: number, month: number) => {
     
-    const events = [];
+    const events: Event[] = [];
     const monthStart = new Date(year, month, 1);
     const monthEnd = endOfMonth(monthStart);
   
@@ -27,7 +34,7 @@ const generateEvents = (year: number, month: number) => {
   
   const Calendar = () => {
     const [currentDate, setCurrentDate] = useState(new Date(2025, 0)); // Startet im Januar 2025
-    const [selectedEvent, setSelectedEvent] = useState(null); // Zustand für das ausgewählte Event
+    const [selectedEvent, setSelectedEvent] = useState<Event | null>(null); // Zustand für das ausgewählte Event
     const monthStart = startOfMonth(currentDate);
     const monthEnd = endOfMonth(currentDate);
     const days = eachDayOfInterval({ start: monthStart, end: monthEnd });
@@ -44,7 +51,7 @@ const generateEvents = (year: number, month: number) => {
       });
     };
   
-    const handleEventClick = (event: any) => {
+    const handleEventClick = (event: Event) => {
       setSelectedEvent(event); // Zeigt das Event im Detail an
     };
   
