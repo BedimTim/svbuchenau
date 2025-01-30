@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/Components/navbar.js", "lib/prisma.js", "app/Components/Footer.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/Components/navbar.js", "lib/prisma.js", "app/Components/Footer.js", "app/aktuelles/page.js", "lib/propsjs"],
   "exclude": ["node_modules"]
 }

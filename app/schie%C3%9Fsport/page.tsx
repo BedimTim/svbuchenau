@@ -23,6 +23,7 @@ export default function Home() {
         <p className="sm:text-lg mt-4 text-black">
             Unser Verein bietet die Disziplinen Luftgewehr und Luftpistole an.<br/>
             <br/>
+            </p>
             <ul>
                 <li>Distanz: 10m</li>
                 <li>Maximal zugelassene Mündungsenergie: 7,5 Joule</li>
@@ -30,7 +31,7 @@ export default function Home() {
                 <li>Alter: ab 12 Jahren</li>
                 <li>LG aufgelegt und freistehend</li>
             </ul>
-        </p>
+        
       </section>
       </div>
     </main>

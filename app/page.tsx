@@ -1,5 +1,6 @@
 import Button from './Components/Button';
 import Link from 'next/link';
+import Calendar from './Components/calendar';
 
 export default function Home() {
   return (
@@ -22,6 +23,10 @@ export default function Home() {
             Weitere Informationen zur Mitgliedschaft finden Sie hier.
           </p>
         </Link>
+      </section>
+
+      <section className="w-full p-8 text-center bg-white shadow-2xl rounded-lg mt-16 sm:m-4">
+        <Calendar />
       </section>
 
       <section className="w-full p-8 text-center bg-white shadow-2xl rounded-lg mt-16 sm:mt-4">

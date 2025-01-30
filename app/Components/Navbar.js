@@ -27,7 +27,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="flex  items-center w-full h-32 px-4 text-black fixed nav bg-white  border-black shadow-xl">
+    <div className="flex items-center w-full h-32 px-4 text-black fixed nav bg-white z-50 border-black shadow-xl">
       <div className="flex max-h-28 size-28 hover:bg-gray-100 rounded-full hover:scale-105 shadow-2xl bg-white border-black duration-150 border-2 ">
         {/* <h1 className="text-5xl font-signature ml-2"><a className="link-underline hover:transition ease-in-out delay-150 hover:underline hover:decoration-solid" href="">Logo</a></h1> */}
           <Link
