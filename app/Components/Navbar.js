@@ -11,18 +11,22 @@ const Navbar = () => {
     {
       id: 1,
       link: "startseite",
+      href: "/",
     },
     {
       id: 2,
       link: "aktuelles",
+      href: "/aktuelles",
     },
     {
       id: 3,
       link: "verein",
+      href: "/verein",
     },
     {
       id: 4,
       link: "schießsport",
+      href: "/schiesssport",
     },
   ];
 
@@ -41,12 +45,14 @@ const Navbar = () => {
       </div>
       <div className="my-auto ml-10 mr-auto text-sm sm:text-base">Schützenverein<br/> Buchenau/Giesenhain</div>
       <ul className="hidden md:flex">
-        {links.map(({ id, link }) => (
+        {links.map(({ id, link, href }) => (
+        
           <li
             key={id}
             className="nav-links px-10 size-full cursor-pointer capitalize font-medium text-black hover:scale-125 hover: duration-200 link-underline"
           >
-              {link === "startseite" ? <Link href="/">{link}</Link> : <Link href={link}>{link}</Link>}
+          
+              {<Link href={href}>{link}</Link>}
           </li>
         ))}
       </ul>

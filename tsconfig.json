@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/Components/navbar.js", "lib/prisma.js", "app/Components/Footer.js", "app/aktuelles/page.js", "lib/propsjs"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/Components/navbar.js", "lib/prisma.js", "app/Components/Footer.js", "app/aktuelles/page.jsx", "lib/propsjs", "lib/datocms.js", "app/aktuelles/[slug]/page.jsx"],
   "exclude": ["node_modules"]
 }
