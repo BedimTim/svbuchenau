@@ -52,7 +52,7 @@ export async function getArticleBySlug(slug: string) {
       "Authorization": `Bearer ${API_TOKEN}`,
       "Accept": "application/json",
     },
-    body: JSON.stringify({ query, variables: { id } }),
+    body: JSON.stringify({ query, variables: { slug } }),
   });
 
   const { data } = await response.json();
