@@ -17,18 +17,17 @@ const PAGE_CONTENT_QUERY = `
 export default async function Aktuelles() {
   
   const articles = await performRequest(PAGE_CONTENT_QUERY);
-  console.log("🚀 DatoCMS API Response:", JSON.stringify(articles, null, 2));
 
   return (
     <main>
       <div className="mt-32 flex min-h-screen sm:mt-12 flex-col items-center sm:justify-between sm:p-24 ">
-      <h1 className="text-3xl p-2 bg-white shadow-lg rounded-lg font-bold transition">Aktuelles</h1>
+      <h1 className="m-4 text-3xl p-2 bg-white shadow-lg rounded-lg font-bold transition">Aktuelles</h1>
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.allArticles.map(article => (
           <Link key={article.slug} href={`/aktuelles/${article.slug}`} className="block bg-white shadow-lg rounded-lg overflow-hidden hover:scale-[1.02] transition">
             
-            <div className="p-4">
+            <div className="p-4 m-2">
               <p className="text-sm text-gray-500">{format(new Date(article.created), "dd.MM.yyyy", { locale: de })}</p>
               <h2 className="text-xl font-semibold mt-1">{article.title}</h2>
         
