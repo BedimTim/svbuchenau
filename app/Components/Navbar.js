@@ -66,12 +66,12 @@ const Navbar = () => {
 
       {nav && (
         <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b duration-300 from-white to-white text-black">
-          {links.map(({ id, link }) => (
+          {links.map(({ id, link, href }) => (
             <li
               key={id}
               className="px-4 cursor-pointer capitalize py-6 text-4xl hover:scale-105 hover:text-lime-600 duration-200"
             >
-              {link === "startseite" ? <Link onClick={() => setNav(!nav)} href="/">{link}</Link> :  <Link onClick={() => setNav(!nav)} href={link}>{link}</Link>}
+              <Link onClick={() => setNav(!nav)} href={href}>{link}</Link>
               
             </li>
           ))}

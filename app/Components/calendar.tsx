@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, getDay, addDays, eachWeekOfInterval } from "date-fns";
 import { de } from "date-fns/locale/de";
 import { motion } from "framer-motion";
@@ -76,8 +76,12 @@ const generateEvents = (year: number, month: number) => {
     const monthStart = startOfMonth(currentDate);
     const monthEnd = endOfMonth(currentDate);
     const days = eachDayOfInterval({ start: monthStart, end: monthEnd });
-    const events = generateEvents(currentDate.getFullYear(), currentDate.getMonth());
+    const [events, setEvents] = useState<Event[]>([]);
   
+    useEffect(() => {
+      setEvents(generateEvents(currentDate.getFullYear(), currentDate.getMonth()));
+    }, [currentDate]);
+
     const goToNextMonth = () => {
       setCurrentDate(prevDate => new Date(prevDate.getFullYear(), prevDate.getMonth() + 1, 1));
     };
@@ -140,7 +144,7 @@ const generateEvents = (year: number, month: number) => {
                     {eventForDay.map((event, index) => (
                     <div
                       key={index}
-                      className={`w-3 h-3 rounded-full ${event.color} cursor-pointer`}
+                      className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${event.color} cursor-pointer`}
                       title={event.title}
                     />
                   ))}

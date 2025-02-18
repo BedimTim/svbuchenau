@@ -29,10 +29,10 @@ export default async function ArticlePage({ params }) {
   return (
     <main>
       
-      <div className="flex min-h-screen flex-col items-center sm:p-24 ">
-      <section className="flex-col w-full mt-32 sm:mt-12 p-8 bg-white shadow-2xl text-leftrounded-lg">
+      <div className="flex min-h-screen flex-col items-center sm:p-24">
+      <section className="flex-col w-full mt-32 sm:mt-12 p-8 bg-white rounded-lg shadow-2xl text-leftrounded-lg">
       
-      <Link href="/aktuelles" className="text-blue-500">← Zurück</Link>
+      <Link href="/aktuelles" className="text-white bg-black p-2 duration-200 rounded-lg hover:bg-slate-600">← Zurück</Link>
       <h1 className="text-3xl font-bold mt-2">{pageContent.article.title}</h1>
       <p className="text-sm text-gray-500 mt-1">{format(new Date(pageContent.article.created), "dd.MM.yyyy", { locale: de })}</p>
       
