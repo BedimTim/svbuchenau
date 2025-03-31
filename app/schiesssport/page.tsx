@@ -10,7 +10,7 @@ export default function Home() {
     <main className="">
       <div className='flex min-h-screen flex-col items-center sm:justify-between sm:p-24 bg-cover bg-center'>
       <section className="flex-col w-full mt-32 sm:mt-12 p-8 shadow-2xl text-left bg-white  rounded-lg">
-        <div className="sm:text-3xl font-semibold text-center text-black" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Training & Wettkämpfe</div>
+        <div className="sm:text-3xl font-semibold text-center text-black">Training & Wettkämpfe</div>
         <p className="sm:text-lg mt-4 text-black">
             Unser wöchentliches Training findet jeden Freitag ab 19:30 in unserem Schützenraum statt.<br/>
             Unter folgendem Link finden sie den Wettkampfplan für den Rundenwettkampf Luftgewehr 2024/2025.<br/>
@@ -19,7 +19,7 @@ export default function Home() {
       </section>
 
       <section className="flex-col w-full mt-32 sm:mt-12 p-8 shadow-2xl text-left bg-white  rounded-lg">
-        <div className="sm:text-3xl font-semibold text-center text-black" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Disziplinen</div>
+        <div className="sm:text-3xl font-semibold text-center text-black" >Disziplinen</div>
         <p className="sm:text-lg mt-4 text-black">
             Unser Verein bietet die Disziplinen Luftgewehr und Luftpistole an.<br/>
             <br/>

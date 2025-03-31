@@ -40,7 +40,7 @@ const Navbar = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <Image className="size-24 " src="/Buchenau.png" width={1080} height={1324} />
+            <Image className="size-24 " src="/Buchenau.png" alt="Logo Schützenverein" width={1080} height={1324} />
           </Link>      
       </div>
       <div className="my-auto ml-10 mr-auto text-sm sm:text-base">Schützenverein<br/> Buchenau/Giesenhain</div>

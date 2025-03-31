@@ -71,52 +71,62 @@ const generateEvents = (year: number, month: number) => {
   };
   
   const Calendar = () => {
-    const [currentDate, setCurrentDate] = useState(new Date()); // Startet im Januar 2025
+    const [currentDate, setCurrentDate] = useState<Date | null>(null); // Initialisiere mit null
     const [selectedEvents, setSelectedEvents] = useState<Event[]>([]); // Zustand für das ausgewählte Event
-    const monthStart = startOfMonth(currentDate);
-    const monthEnd = endOfMonth(currentDate);
-    const days = eachDayOfInterval({ start: monthStart, end: monthEnd });
     const [events, setEvents] = useState<Event[]>([]);
   
     useEffect(() => {
-      setEvents(generateEvents(currentDate.getFullYear(), currentDate.getMonth()));
+      setCurrentDate(new Date()); // Setze das aktuelle Datum beim Laden der Seite
+    }, []);
+  
+    useEffect(() => {
+      if (currentDate) {
+        setEvents(generateEvents(currentDate.getFullYear(), currentDate.getMonth()));
+      }
     }, [currentDate]);
-
+  
     const goToNextMonth = () => {
-      setCurrentDate(prevDate => new Date(prevDate.getFullYear(), prevDate.getMonth() + 1, 1));
+      setCurrentDate(prevDate => new Date(prevDate!.getFullYear(), prevDate!.getMonth() + 1, 1));
     };
   
     const goToPrevMonth = () => {
       setCurrentDate(prevDate => {
-        if (prevDate.getFullYear() === 2025 && prevDate.getMonth() === 0) return prevDate; // Blockiert vor Januar 2025
-        return new Date(prevDate.getFullYear(), prevDate.getMonth() - 1, 1);
+        if (prevDate!.getFullYear() === 2025 && prevDate!.getMonth() === 0) return prevDate;
+        return new Date(prevDate!.getFullYear(), prevDate!.getMonth() - 1, 1);
       });
     };
   
     const handleEventClick = (eventsForDay: Event[]) => {
-      setSelectedEvents(eventsForDay); // Zeigt das Event im Detail an
+      setSelectedEvents(eventsForDay);
     };
+  
+    if (!currentDate) {
+      return <div>Loading...</div>; // Zeige einen Ladezustand an, bis das aktuelle Datum gesetzt ist
+    }
+  
+    const monthStart = startOfMonth(currentDate);
+    const monthEnd = endOfMonth(currentDate);
+    const days = eachDayOfInterval({ start: monthStart, end: monthEnd });
   
     return (
       <div className="max-w-2xl mx-auto p-4 relative z-10">
         <button 
-                  onClick={() => setCurrentDate(new Date())} 
-                  className="px-4 py-2 ml-0 bg-gray-300 hover:bg-gray-400 duration-200  rounded-large"
-          >
-                Heute
-          </button>
+          onClick={() => setCurrentDate(new Date())} 
+          className="px-4 py-2 ml-0 bg-gray-300 hover:bg-gray-400 duration-200 rounded-large"
+        >
+          Heute
+        </button>
         <div className="flex justify-between items-center mb-4">
           <button onClick={goToPrevMonth} className="px-4 py-2 bg-gray-300 hover:bg-gray-400 duration-200 rounded-large" disabled={currentDate.getFullYear() === 2025 && currentDate.getMonth() === 0}>&lt;</button>
           
-
           <motion.div
-              key={currentDate.toString()}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.3 }}
+            key={currentDate.toString()}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.3 }}
           >
-              <h2 className="text-xl font-bold">{format(currentDate, "MMMM yyyy", { locale: de })}</h2>
+            <h2 className="text-xl font-bold">{format(currentDate, "MMMM yyyy", { locale: de })}</h2>
           </motion.div>
           
           <button onClick={goToNextMonth} className="px-4 py-2 bg-gray-300 hover:bg-gray-400 duration-200 rounded-large">&gt;</button>
@@ -135,20 +145,18 @@ const generateEvents = (year: number, month: number) => {
             return (
               <div key={day.toString()} className={clsx("relative p-4 h-16 flex flex-col hover:bg-opacity-60 hover:bg-gray-300 hover:rounded-large duration-100 items-center text-base cursor-pointer", isToday(day) && "bg-orange-300 bg-opacity-65 rounded-large font-bold")} onClick={() => handleEventClick(eventForDay)}>
                 
-                <span className="text-lg z-30   font-semibold">{format(day, "d")}</span>
+                <span className="text-lg z-30 font-semibold">{format(day, "d")}</span>
                 {eventForDay.length > 0 && (
                   <div 
                     className="absolute top-1 left-1/2 -translate-x-1/2 flex gap-1 justify-center z-20 cursor-pointer"
-                     // Event-Click für Details
                   >
                     {eventForDay.map((event, index) => (
-                    <div
-                      key={index}
-                      className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${event.color} cursor-pointer`}
-                      title={event.title}
-                    />
-                  ))}
-
+                      <div
+                        key={index}
+                        className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${event.color} cursor-pointer`}
+                        title={event.title}
+                      />
+                    ))}
                   </div>
                 )}
               </div>
@@ -156,31 +164,29 @@ const generateEvents = (year: number, month: number) => {
           })}
         </div>
         {selectedEvents.length > 0 && (
-  <motion.div 
-    className="mt-4 p-4 bg-gray-100 rounded shadow-lg"
-    initial="hidden"
-    animate="visible"
-    
-    exit="hidden"
-    variants={detailVariants}
-  >
-    <h3 className="text-xl font-semibold">
-      Events am {format(new Date(selectedEvents[0].date), "dd.MM.yyyy")}
-    </h3>
-    <ul>
-      {selectedEvents.map((event, index) => (
-        <li key={index} className="mt-2">
-          <span className={`w-3 h-3 rounded-full inline-block ${event.color} mr-2`} />
-          <strong>{event.title}</strong>: {event.description}
-        </li>
-      ))}
-    </ul>
-    <button onClick={() => setSelectedEvents([])} className="mt-2 px-4 py-2 bg-gray-300 rounded-large hover:bg-gray-400 duration-200">
-      Schließen
-    </button>
-  </motion.div>
-)}
-        
+          <motion.div 
+            className="mt-4 p-4 bg-gray-100 rounded shadow-lg"
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={detailVariants}
+          >
+            <h3 className="text-xl font-semibold">
+              Events am {format(new Date(selectedEvents[0].date), "dd.MM.yyyy")}
+            </h3>
+            <ul>
+              {selectedEvents.map((event, index) => (
+                <li key={index} className="mt-2">
+                  <span className={`w-3 h-3 rounded-full inline-block ${event.color} mr-2`} />
+                  <strong>{event.title}</strong>: {event.description}
+                </li>
+              ))}
+            </ul>
+            <button onClick={() => setSelectedEvents([])} className="mt-2 px-4 py-2 bg-gray-300 rounded-large hover:bg-gray-400 duration-200">
+              Schließen
+            </button>
+          </motion.div>
+        )}
       </div>
     );
   };
