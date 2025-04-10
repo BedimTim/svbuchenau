@@ -1,9 +1,6 @@
-import Button from '../Components/Button';
-import Link from 'next/link';
-import Image from 'next/image';
+"use client";
 import React from "react";
-
-
+import PokalAccordion from '../Components/PokalAccordion';
 
 export default function Home() {
   return (
@@ -32,6 +29,10 @@ export default function Home() {
                 <li>LG aufgelegt und freistehend</li>
             </ul>
         
+      </section>
+      <section className="flex-col w-full mt-32 sm:mt-12 p-8 shadow-2xl text-left bg-white  rounded-lg">
+        <div className="sm:text-3xl font-semibold text-center text-black" >Pokale des Vereins</div>
+            <PokalAccordion />
       </section>
       </div>
     </main>

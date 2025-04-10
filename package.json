@@ -12,6 +12,7 @@
     "@datocms/cda-client": "github:datocms/cda-client",
     "@datocms/cma-client-node": "^3.4.2",
     "@heroui/calendar": "^2.2.13",
+    "@heroui/react": "^2.7.6",
     "@nextui-org/calendar": "^2.0.11",
     "@nextui-org/react": "^2.4.6",
     "@nextui-org/system": "^2.2.5",

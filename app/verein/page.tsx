@@ -51,9 +51,9 @@ export default function Home() {
         <section className="flex-col w-full mt-8 sm:mt-4 p-4 shadow-2xl text-left bg-white rounded-lg">
           <div className="sm:text-3xl font-semibold text-center text-black">Vereinschronik</div>
           <div className="sm:text-lg mt-4 text-black max-w-2xl mx-auto">
-          <div className="chronik-container max-w-2xl mx-auto p-6 font-sans leading-relaxed">
+          
             <Vereinschronik />
-          </div>
+          
           </div>
         </section>
       </div>
