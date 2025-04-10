@@ -65,7 +65,7 @@ so schlecht, sodass man damals alles verbrannt hat.
           <h3 className="text-xl font-semibold text-black mt-4">Die zweite Vereinsgründung:</h3>
           <p className="mt-6">
           Am Samstag, den 25. Januar 1958 wurde wieder ein Schützenverein von 
-folgenden 14 Personen in der Gaststätte "Schloßschenke" ins Leben gerufen:
+folgenden 14 Personen in der Gaststätte &ldquo;Schloßschenke&ldquo; ins Leben gerufen:
           </p>
           <ul className="mt-2 space-y-2">
             {[
@@ -108,7 +108,7 @@ die Munition kostete damals pro Serie 0,20 DM für jeden Schützen.
           Der Übungsabend wurde damals schon auf den Freitagabend festgelegt.
           </p>
           <p className="mt-6">
-          Der Schießstand befand sich im Saal der ,,Schloßschenke". 
+          Der Schießstand befand sich im Saal der &ldquo;Schloßschenke&ldquo;. 
 Da der Raum nicht die erforderlichen 10 m Länge hatte, musste durch eine 
 Türöffnung in einen dahinter liegenden Raum geschossen werden. Eine Benutzung einer Scheibenzuganlage war dadurch nicht möglich. Deshalb 
 musste eine Person vor Ort die Scheiben wechseln. Wenn zwei Schützen am 
@@ -135,8 +135,8 @@ Luftgewehr zu kaufen.
           Mitte des Jahres legte der erste Vorsitzende Karl Weider sein Amt nieder 
 begründet durch seinen Umzug nach Arzell.<br/>
 Revierförster Hellige übernahm den Vorsitz. <br/>
-Das bisherige Vereinslokal, die "Schloßschenke" wurde geschlossen und der 
-Verein siedelte darauf in das "Gasthaus Fuhrmann" um.<br/>
+Das bisherige Vereinslokal, die &ldquo;Schloßschenke&ldquo; wurde geschlossen und der 
+Verein siedelte darauf in das &ldquo;Gasthaus Fuhrmann&ldquo; um.<br/>
 Hier stand ein größerer Raum zur Verfügung, so dass vier Scheibenzuganlagen montiert werden konnten.
           </p>
           <p className="mt-6">
