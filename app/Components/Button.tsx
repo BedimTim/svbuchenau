@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({ name, file }) => {
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = "Beitritt.pdf";
+        link.download = "Beitritt.docx";
         link.click();
         window.URL.revokeObjectURL(url);
     };

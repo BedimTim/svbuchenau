@@ -11,6 +11,10 @@ const PAGE_CONTENT_QUERY = `
       slug
       title
       created
+      image {
+        url
+        alt
+      }
       content {
         value
       }
@@ -36,6 +40,17 @@ export default async function ArticlePage({ params }) {
       <h1 className="text-3xl font-bold mt-2">{pageContent.article.title}</h1>
       <p className="text-sm text-gray-500 mt-1">{format(new Date(pageContent.article.created), "dd.MM.yyyy", { locale: de })}</p>
       
+      {pageContent.article.image && (
+            <div className="my-6">
+              <Image 
+                src={pageContent.article.image.url} 
+                alt={pageContent.article.image.alt || pageContent.article.title} 
+                width={800}
+                height={450}
+                className="w-full object-cover rounded-lg shadow-md"
+              />
+            </div>
+          )}
         <StructuredText data={pageContent.article.content}/>
       </section>
       </div>

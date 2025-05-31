@@ -7,9 +7,9 @@ export default function Home() {
     <main /*className=" bg-gradient-to-r from-green-400 via-blue-500 to-purple-600"*/>
       <div className="flex min-h-screen flex-col items-center sm:justify-between sm:p-24 ">
       <section className="flex-col w-full mt-32 sm:mt-12 p-8 sm:text-center shadow-2xl text-left bg-white rounded-lg">
-        <div className="sm:text-3xl font-semibold text-center text-black" >Schützenverein Buchenau / Giesenhain</div>
         <p className="flex-row sm:text-xl mt-4 text-black">
-          Herzlich Willkommen auf der Webseite des Schützenvereins Buchenau / Giesenhain. <br/>
+          <strong>Herzlich Willkommen auf der Webseite des Schützenvereins Buchenau / Giesenhain. </strong><br/>
+          <br/>
           Hier finden Sie alle Informationen rund um unseren Verein. <br/>
           Wir würden uns freuen, sie bei uns im <Link className='underline hover:text-lime-600 duration-200' href="/verein">Schützenraum</Link> begrüßen zu dürfen.
         </p>

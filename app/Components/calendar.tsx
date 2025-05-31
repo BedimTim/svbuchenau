@@ -33,12 +33,6 @@ const generateEvents = (year: number, month: number) => {
     fridays.forEach(date => {
       events.push({ date: format(date, "yyyy-MM-dd"), title: "Training 19:30", description: "Reguläres Training im Schützenhaus", color: "bg-blue-500" });
     });
-  
-    // Erster Freitag im Monat für Stammtisch
-    const firstFriday = addDays(monthStart, (5 - getDay(monthStart) + 7) % 7);
-    if (firstFriday.getMonth() === month) {
-      events.push({ date: format(firstFriday, "yyyy-MM-dd"), title: "Stammtisch 20:00", description: "Dorfabend", color: "bg-red-400" });
-    }
     
     if (month === 0) { // Monat 0 = Januar
       events.push({ date: `${year}-01-01`, title: "Neujahrspokalschießen 15:00", description: "Ausschießen des Neujahrspokals", color: "bg-red-500" });
@@ -64,7 +58,11 @@ const generateEvents = (year: number, month: number) => {
     events.push({ date: "2025-04-13", title: "Hessischer Schützentag", description: "In Baunatal", color: colorVs });
 
     const colorJg = "bg-lime-600";
+    events.push({ date: "2025-06-07", title: "Schützenfest", description: "In Nüsterrasen", color: colorJg });
+    events.push({ date: "2025-06-08", title: "Schützenfest", description: "In Nüsterrasen", color: colorJg });
     events.push({ date: "2025-06-09", title: "Schützenfest", description: "In Nüsterrasen", color: colorJg });
+    events.push({ date: "2025-06-28", title: "Bezirkspokal", description: "In Traisbach", color: colorJg });
+    events.push({ date: "2025-06-29", title: "Bezirkspokal", description: "In Traisbach", color: colorJg });
     events.push({ date: "2025-07-13", title: "Bezirksschützenfest", description: "In Traisbach", color: colorJg });
 
     return events;
