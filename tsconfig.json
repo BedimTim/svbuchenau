@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,9 +22,26 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@/*": [
+        "./*"
+      ]
+    },
+    "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/Components/navbar.js", "lib/prisma.js", "app/Components/Footer.js", "app/aktuelles/page.jsx", "lib/propsjs", "lib/datocms.js", "app/aktuelles/[slug]/page.jsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/Components/navbar.js",
+    "lib/prisma.js",
+    "app/Components/Footer.js",
+    "app/aktuelles/page.jsx",
+    "lib/propsjs",
+    "lib/datocms.js",
+    "app/aktuelles/[slug]/page.jsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

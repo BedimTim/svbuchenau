@@ -1,5 +1,5 @@
 import { performRequest } from "@/lib/datocms";
-import Image from "next/image";
+import { Image as DatoImage, RSCImage as DatoSRCImage } from "react-datocms";
 import Link from "next/link";
 import { format } from "date-fns";
 import { de } from "date-fns/locale";
@@ -12,9 +12,15 @@ const PAGE_CONTENT_QUERY = `
       title
       created
       image {
-        url
+      responsiveImage(imgixParams: { fit: crop, w: 300, h: 300, auto: format }) {
+        sizes
+        src
+        width
+        height
         alt
+        base64
       }
+    }
       content {
         value
       }
@@ -42,13 +48,11 @@ export default async function ArticlePage({ params }) {
       
       {pageContent.article.image && (
             <div className="my-6">
-              <Image 
-                src={pageContent.article.image.url} 
-                alt={pageContent.article.image.alt || pageContent.article.title} 
-                width={800}
-                height={450}
-                className="w-full object-cover rounded-lg shadow-md"
-              />
+            <DatoImage
+              data={pageContent.article.image.responsiveImage}
+              alt={pageContent.article.image.alt || pageContent.article.title}
+              className="w-full items-center h-48 object-cover rounded-lg"
+            />
             </div>
           )}
         <StructuredText data={pageContent.article.content}/>

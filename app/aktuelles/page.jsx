@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { performRequest } from "@/lib/datocms";
-import Image from "next/image";
+import { Image as DatoImage, RSCImage as DatoSRCImage } from "react-datocms";
 import { format } from "date-fns";
 import { de } from "date-fns/locale";
 
@@ -11,9 +11,15 @@ const PAGE_CONTENT_QUERY = `
       title
       created
       image {
-        url
+      responsiveImage(imgixParams: { fit: , w: 300, h: 300, auto: format }) {
+        sizes
+        src
+        width
+        height
         alt
+        base64
       }
+    }
     }
   }
 `;
@@ -32,13 +38,11 @@ export default async function Aktuelles() {
           <Link key={article.slug} href={`/aktuelles/${article.slug}`} className="block bg-white shadow-lg rounded-lg overflow-hidden hover:scale-[1.02] transition">
             
             {article.image && (
-                <Image 
-                  src={article.image.url} 
-                  alt={article.image.alt || article.title} 
-                  width={400} 
-                  height={250} 
-                  className="w-full object-cover"
-                />
+              <DatoImage
+                data={article.image.responsiveImage}
+                alt={article.image.alt || article.title}
+                className="w-full items-center h-48 object-cover" 
+              />
               )}
 
             <div className="p-4 m-2">
