@@ -8,10 +8,10 @@ export default function Home() {
       <div className="flex min-h-screen flex-col items-center sm:justify-between sm:p-24 ">
       <section className="flex-col w-full mt-32 sm:mt-12 p-8 sm:text-center shadow-2xl text-left bg-white rounded-lg">
         <p className="flex-row sm:text-xl mt-4 text-black">
-          <strong>Herzlich Willkommen auf der Webseite des Schützenvereins Buchenau / Giesenhain. </strong><br/>
+          <strong>Willkommen auf der Homepage des Schützenvereins Buchenau / Giesenhain!</strong><br/>
           <br/>
-          Hier finden Sie alle Informationen rund um unseren Verein. <br/>
-          Wir würden uns freuen, sie bei uns im <Link className='underline hover:text-lime-600 duration-200' href="/verein">Schützenraum</Link> begrüßen zu dürfen.
+          Auf dieser Seite erhalten Sie alle wichtigen Informationen zu unserem Verein.<br/>
+          Wir laden Sie herzlich ein, uns im <Link className='underline hover:text-lime-600 duration-200' href="/verein">Schützenraum</Link> freitags ab 19:30 Uhr zu besuchen.
         </p>
       </section>
       
@@ -26,6 +26,14 @@ export default function Home() {
       </section>
 
       <section className="w-full p-8 text-center bg-white shadow-2xl rounded-lg mt-16 sm:m-4">
+        <h2 className="text-2xl font-semibold text-black">Kalender</h2>
+        <p className="my-4 text-black">
+          Hier finden Sie alle Termine und Veranstaltungen des Schützenvereins.<br/>
+          Sie können mehr über Termine erfahren, indem Sie auf einen Tag im Kalender klicken.<br/>
+        </p>
+        <p className="my-4 text-black">
+          Hinweis: Einige Termine können sich kurzfristig ändern.<br /> Bitte schauen Sie regelmäßig vorbei, um auf dem Laufenden zu bleiben.
+        </p>
         <Calendar />
       </section>
 

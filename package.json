@@ -13,6 +13,7 @@
     "@datocms/cma-client-node": "^3.4.2",
     "@heroui/calendar": "^2.2.13",
     "@heroui/react": "^2.7.6",
+    "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "datocms-client": "^3.3.0",

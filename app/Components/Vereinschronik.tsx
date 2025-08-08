@@ -1,43 +1,9 @@
-import { useState, useEffect } from "react";
 
 const Vereinschronik = () => {
-  const [isVisible, setIsVisible] = useState(true);
-  const [showButton, setShowButton] = useState(false);
-  const [isAboveFooter, setIsAboveFooter] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const chronik = document.getElementById("chronikContent");
-      if (chronik) {
-        const chronikRect = chronik.getBoundingClientRect();
-        const footerHeight = 20; // Geschätzte Höhe des Footers
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        const scrollY = window.scrollY;
-        
-        setShowButton(chronikRect.top < windowHeight && chronikRect.bottom > 0);
-        setIsAboveFooter(scrollY + windowHeight < documentHeight - footerHeight);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className="relative max-w-2xl mx-auto p-6 font-sans leading-relaxed">
-      {showButton && isAboveFooter && (
-        <button
-          onClick={() => setIsVisible(!isVisible)}
-          className="fixed bottom-5 right-5 px-4 py-2 bg-black text-white font-semibold rounded shadow-lg hover:bg-teal-700 transition"
-        >
-          Chronik ein-/ausklappen
-        </button>
-      )}
-      {isVisible && (
-        <div id="chronikContent" className="mt-6">
-          <p>
+      <div id="chronikContent" className="mt-6">
+        <p>
             Die Chronik des Vereins wurde von Werner Hodes verfasst, und von Edeltraut Hodes anlässlich der 100 – Jahrfeier des Vereins auf dem Festkommers am 15.06.2002 vorgetragen.
           </p>
           
@@ -248,7 +214,6 @@ willkommen. <br/>
 Die notwendige Ausrüstung zum Schießen wird durch den Verein zur 
 Verfügung gestellt.</p>
         </div>
-      )}
     </div>
   );
 };

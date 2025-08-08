@@ -31,7 +31,26 @@ const generateEvents = (year: number, month: number) => {
     // Jeden Freitag Training um 19:30
     const fridays = eachDayOfInterval({ start: monthStart, end: monthEnd }).filter(date => getDay(date) === 5);
     fridays.forEach(date => {
-      events.push({ date: format(date, "yyyy-MM-dd"), title: "Training 19:30", description: "Reguläres Training im Schützenhaus", color: "bg-blue-500" });
+      // Training nur, wenn kein gesetzlicher Feiertag in Hessen
+      const hessenFeiertage = [
+        "01-01", // Neujahr
+        "03-29", // Karfreitag 2025
+        "03-31", // Ostersonntag 2025
+        "04-01", // Ostermontag 2025
+        "05-01", // Tag der Arbeit
+        "05-29", // Christi Himmelfahrt 2025
+        "06-08", // Pfingstsonntag 2025
+        "06-09", // Pfingstmontag 2025
+        "06-19", // Fronleichnam 2025
+        "10-03", // Tag der Deutschen Einheit
+        "12-25", // 1. Weihnachtstag
+        "12-26", // 2. Weihnachtstag
+      ];
+      const dateStr = format(date, "yyyy-MM-dd");
+      const mmdd = format(date, "MM-dd");
+      if (!hessenFeiertage.includes(mmdd)) {
+        events.push({ date: dateStr, title: "Training 19:30", description: "Reguläres Training im Schützenhaus", color: "bg-blue-500" });
+      }
     });
     
     if (month === 0) { // Monat 0 = Januar
