@@ -21,9 +21,8 @@ export default function Home() {
           <p className="m-4">
             Adresse: Giesenhainer Str. 6, 36132 Eiterfeld-Buchenau
           </p>
-          <div className="flex flex-col sm:flex-row"> 
+          <div className="flex flex-col justify-center sm:flex-row"> 
             <GoogleMaps />
-            <Image src="" alt="Schützenraum" width={250} height={150} className="mx-auto mt-2 sm:m-auto p-8 bg-black bg-center" />
           </div>
         </section>
 
