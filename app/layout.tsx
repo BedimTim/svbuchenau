@@ -25,6 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
+      <head><meta name="google-site-verification" content="KN5oEGBbYP1Y0u5IMEstQH-NxqKdX1aIZnQNDbs3CV4" /></head>
       <body className={inter.className}>
         <Navbar></Navbar>
         <AppClient />
