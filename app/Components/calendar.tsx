@@ -67,6 +67,25 @@ const generateEvents = (year: number, month: number) => {
     events.push({ date: "2025-02-23", title: "Bezirksmeisterschaft LP", description: "Alle Klassen in Mackenzell", color: colorWk });
     events.push({ date: "2025-03-07", title: "RWK LG 20:00", description: "Auswärts gegen Leibolz 3", color: colorWk });
     events.push({ date: "2025-03-20", title: "RWK LG 20:00", description: "Auswärts gegen Arzell 2", color: colorWk });
+    events.push({ date: "2025-10-17", title: "RWK LG 20:00", description: "Heimkampf gegen Arzell 2", color: colorWk });
+    events.push({ date: "2025-10-31", title: "RWK LG 19:00", description: "Auswärts gegen Hünfeld 1", color: colorWk });
+    events.push({ date: "2025-11-10", title: "LG Auflage", description: "In Nüsterrasen", color: colorWk });
+    events.push({ date: "2025-11-14", title: "RWK LG 20:00", description: "Auswärts gegen Morles 3", color: colorWk });
+    events.push({ date: "2025-11-24", title: "LG Auflage", description: "In Leibolz", color: colorWk });
+    events.push({ date: "2025-11-28", title: "RWK LG 20:00", description: "Heimkampf gegen Leibolz 3", color: colorWk });
+    events.push({ date: "2025-12-08", title: "LG Auflage", description: "In Michelsrombach", color: colorWk });
+    events.push({ date: "2025-12-12", title: "RWK LG 20:00", description: "Heimkampf gegen Roßbach 2", color: colorWk });
+    events.push({ date: "2026-01-05", title: "LG Auflage", description: "In Mackenzell", color: colorWk });
+    events.push({ date: "2026-01-09", title: "RWK LG 20:00", description: "Auswärts gegen Arzell 2", color: colorWk });
+    events.push({ date: "2026-01-19", title: "LG Auflage", description: "In Kiebitzgrund", color: colorWk });
+    events.push({ date: "2026-01-23", title: "RWK LG 20:00", description: "Heimkampf gegen Hünfeld 1", color: colorWk });
+    events.push({ date: "2026-02-02", title: "LG Auflage", description: "In Morles", color: colorWk });
+    events.push({ date: "2026-02-06", title: "RWK LG 20:00", description: "Heimkampf gegen Morles 3", color: colorWk });
+    events.push({ date: "2026-02-20", title: "RWK LG 20:00", description: "Auswärts gegen Leibolz 3", color: colorWk });
+    events.push({ date: "2026-03-06", title: "RWK LG 20:00", description: "Auswärts gegen Roßbach 2", color: colorWk });
+    events.push({ date: "2026-03-28", title: "Gemeindepokalschießen", description: "In Leibolz", color: colorWk });
+
+    // Vereinsveranstaltungen
 
     const colorVs = "bg-red-500";
     events.push({ date: "2025-03-21", title: "Jahreshauptversammlung 20:00", description: "SV Buchenau/Giesenhain", color: colorVs });
@@ -75,6 +94,11 @@ const generateEvents = (year: number, month: number) => {
     events.push({ date: "2025-04-11", title: "Hessischer Schützentag", description: "In Baunatal", color: colorVs });
     events.push({ date: "2025-04-12", title: "Hessischer Schützentag", description: "In Baunatal", color: colorVs });
     events.push({ date: "2025-04-13", title: "Hessischer Schützentag", description: "In Baunatal", color: colorVs });
+    events.push({ date: "2025-12-19", title: "Glühweinabend", description: "Im Schützenraum", color: colorVs });
+    events.push({ date: "2026-03-25", title: "Bezirksversammlung 18:30", description: "In Neuhof", color: colorVs });
+    events.push({ date: "2026-04-10", title: "Hessischer Schützentag", description: "In Usingen", color: colorVs });
+    events.push({ date: "2026-04-11", title: "Hessischer Schützentag", description: "In Usingen", color: colorVs });
+    events.push({ date: "2026-04-12", title: "Hessischer Schützentag", description: "In Usingen", color: colorVs });
 
     const colorJg = "bg-lime-600";
     events.push({ date: "2025-06-07", title: "Schützenfest", description: "In Nüsterrasen", color: colorJg });

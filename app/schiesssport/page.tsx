@@ -14,7 +14,7 @@ export default function Home() {
             Die dazu benötigte Ausrüstung wird vom Verein gestellt.<br/>
             <br/>
             Unter folgendem Link finden sie den Wettkampfplan für den Rundenwettkampf Luftgewehr 2025/2026.<br/>
-            <a className='underline duration-500 hover:text-lime-600' href="https://www.rwk-onlinemelder.de/online/listen/hsvsb27?sel_group_id=35&sel_discipline_id=4&sel_class_id=18&sel_list_type=competitionSchedule&sel_turn_date=&showCombined=0">RWK-Onlinemelder LG 25/26 Bezirksklasse 3 Nord </a> &#40;noch keine Termine vorhanden&#41;
+            <a className='underline duration-500 hover:text-lime-600' href="https://www.rwk-onlinemelder.de/online/listen/hsvsb27?sel_group_id=35&sel_discipline_id=4&sel_class_id=18&sel_list_type=competitionSchedule&sel_turn_date=&showCombined=0">RWK-Onlinemelder LG 25/26 Bezirksklasse 3 Nord </a>
         </p>
         <ArchivAccordion />
       </section>
