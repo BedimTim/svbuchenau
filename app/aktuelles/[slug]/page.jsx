@@ -38,7 +38,7 @@ export default async function ArticlePage({ params }) {
 
   return (
     <main>
-      <div className="flex w-full flex-col items-center justify-center min-h-screen px-4 sm:px-8 lg:px-12">
+      <div className="flex w-full flex-col items-center px-4 justify-center py-8 sm:px-8 sm:py-12 lg:px-12 my-32">
         <section className="w-full max-w-3xl rounded-lg bg-white p-4 text-left shadow-2xl sm:p-8">
           <Link href="/aktuelles" className="inline-block rounded-lg bg-black p-2 text-white duration-200 hover:bg-slate-600">← Zurück</Link>
           <h1 className="mt-3 text-2xl font-bold sm:text-3xl">{pageContent.article.title}</h1>
@@ -53,7 +53,7 @@ export default async function ArticlePage({ params }) {
               />
             </div>
           )}
-          <div className="break-words [&_a]:break-all [&_img]:h-auto [&_img]:max-w-full">
+          <div className="break-words space-y-4 [&_a]:break-all [&_a]:text-lime-600 [&_a]:underline [&_a]:hover:text-lime-700 [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:mt-6 [&_h1]:mb-4 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-5 [&_h2]:mb-3 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mt-4 [&_h3]:mb-2 [&_h4]:text-lg [&_h4]:font-semibold [&_h4]:mt-4 [&_h4]:mb-2 [&_h5]:text-base [&_h5]:font-semibold [&_h5]:mt-3 [&_h5]:mb-2 [&_h6]:text-sm [&_h6]:font-semibold [&_h6]:mt-3 [&_h6]:mb-2 [&_p]:leading-relaxed [&_strong]:font-bold [&_em]:italic [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:space-y-1 [&_li]:leading-relaxed [&_img]:h-auto [&_img]:max-w-full [&_img]:rounded-lg [&_img]:my-4 [&_hr]:my-6 [&_hr]:border-gray-300 [&_blockquote]:border-l-4 [&_blockquote]:border-lime-600 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-gray-700">
             <StructuredText data={pageContent.article.content} />
           </div>
         </section>
