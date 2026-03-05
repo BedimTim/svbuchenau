@@ -17,6 +17,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [heroui()],
+  plugins: [heroui() as unknown as NonNullable<Config["plugins"]>[number]],
 };
 export default config;
